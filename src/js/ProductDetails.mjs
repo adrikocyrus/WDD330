@@ -28,7 +28,7 @@ export default class ProductDetails {
 }
 
 function productDetailsTemplate(product) {
-  return = `<section class="product-details">
+  return `<section class="product-details">
       <h3>${product.Brand.Name}</h3>
 
       <h2 class="divider">${product.Name}</h2>
