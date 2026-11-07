@@ -1,19 +1,3 @@
-import { renderListWithTemplate } from "./utils.mjs";
-
-function productCardTemplate(product){
-    return `<li class="product-card">
-    <a href="product_pages/?product=${product.id}">
-      <img src="${product.image}" alt="Image of ${product.name}">
-      <h2 class="card__brand">${product.brand}</h2>
-      <h3 class="card__name">${product.name}</h3>
-      <p class="product-card__price">$${product.price.toFixed(2)}</p>
-    </a>
-  </li>`
-}
-
-export default class ProductList {
-  constructor(productCategory, dataSource,listElement) {
-    this.productCategory = productCategory;
 import { renderListWithTemplate, setImageFallback } from "./utils.mjs";
 
 function productCardTemplate(product) {
@@ -35,14 +19,6 @@ export default class ProductList {
   }
 
   async init() {
-    const list = await this.dataSource.getData();
-    this.renderList(list);
-  }
-
-    renderList(list) {
-    renderListWithTemplate(productCardTemplate, this.listElement, list);
-  } 
-}  
     if (!this.listElement) {
       throw new Error(
         `Could not find product list element for category: ${this.category}`,
@@ -53,11 +29,11 @@ export default class ProductList {
     this.renderList(products);
   }
 
-  renderList(list) {
+  renderList(products) {
     renderListWithTemplate(
       productCardTemplate,
       this.listElement,
-      list,
+      products,
       "afterbegin",
       true,
     );
