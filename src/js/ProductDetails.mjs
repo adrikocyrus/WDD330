@@ -12,6 +12,7 @@ export default class ProductDetails {
   }
 
   async init() {
+    console.log("product id:", this.productId);
     this.product = await this.dataSource.findProductById(this.productId);
     if (!this.product) {
       throw new Error(`Product not found: ${this.productId}`);
@@ -24,6 +25,11 @@ export default class ProductDetails {
       throw new Error("Add to Cart button was not rendered");
     }
     addToCartButton.addEventListener("click", this.addProductToCart.bind(this));
+    console.log("product id:", this.productId);
+
+    document
+      .getElementById("addToCart")
+      .addEventListener("click", this.addProductToCart.bind(this));
   }
 
   addProductToCart() {
@@ -48,6 +54,8 @@ export default class ProductDetails {
       productDetailsTemplate(this.product),
     );
     setImageFallback(mainElement);
+    const element = document.querySelector(".product-detail");
+    element.innerHTML = productDetailsTemplate(this.product);
   }
 }
 
