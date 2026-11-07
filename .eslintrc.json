@@ -25,6 +25,8 @@
       }
     ],
     "no-console": 1,
+    "quotes": 0,
+    
     "quotes": [
       "error",
       "double",
