@@ -6,8 +6,9 @@ const dataSource = new ProductData("tents");
 const productId = getParam("product");
 const product = new ProductDetails(productId, dataSource);
 product.init();
-
-
+console.log(window.location.href);
+console.log(window.location.search);
+console.log(getParam("product"));
 //function addProductToCart(product) {
 //  const cartItems = getLocalStorage("so-cart") || [];
 //  cartItems.push(product);

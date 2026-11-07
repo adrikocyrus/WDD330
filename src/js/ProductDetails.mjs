@@ -9,8 +9,11 @@ export default class ProductDetails {
   }
 
   async init() {
+    console.log("product id:", this.productId);
     this.product = await this.dataSource.findProductById(this.productId);
     this.renderProductDetails();
+    console.log("product id:", this.productId);
+
     document
       .getElementById("addToCart")
       .addEventListener("click", this.addProductToCart.bind(this));
@@ -23,7 +26,8 @@ export default class ProductDetails {
   }
 
   renderProductDetails() {
-    productDetailsTemplate(this.product);
+    const element = document.querySelector(".product-detail");
+    element.innerHTML = productDetailsTemplate(this.product);
   }
 }
 
